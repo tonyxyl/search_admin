@@ -41,6 +41,13 @@ stdout_logfile_backups=2
 stderr_logfile=/var/log/search.stderr.log
 stderr_logfile_maxbytes=100MB
 stderr_logfile_backups=2
+
+[program:nginx]
+command=/usr/local/nginx/sbin/nginx
+autostart=true
+directory=/usr/local/nginx/html
+stdout_logfile=/var/log/nginx.stdout.log
+redirect_stderr=true
 ```
 
 ## 6. 启动supervisor进程
