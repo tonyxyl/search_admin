@@ -92,3 +92,26 @@ server {
 ## 集成celery
 
 `cd search && celery worker -A celery_runner --loglevel=info`
+
+
+## mongodb数据同步到elasticserach
+
+`pip install 'mongo-connector[elastic5]'`
+
+`pip install 'elastic2-doc-manager[elastic5]'`
+
+**配置supervisor**
+
+```
+[program:mongod]
+command=mongod -f /etc/mongod.conf --replSet mySet
+directory=/home
+autostart=true
+autorestart=true
+
+[program:mongo-connector]
+command=mongo-connector -m 127.0.0.1:27017 -t 127.0.0.1:9200 -d elastic2_doc_manager
+directory=/home
+autostart=true
+autorestart=true
+```
