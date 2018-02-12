@@ -115,3 +115,28 @@ directory=/home
 autostart=true
 autorestart=true
 ```
+
+**flask_bootstrap使用本地或其他cdn资源**
+
+- 加载本地资源, 只需传入相关配置
+
+```
+app = Flask(__name__)
+app.config['BOOTSTRAP_SERVE_LOCAL'] = True
+```
+
+- 使用其他cdn资源, 找到`~/venv/lib/site-packages/flask_bootstrap/__init__.py`文件并修改如下
+
+```
+bootstrap = lwrap(
+    WebCDN('//cdn.bootcss.com/bootstrap/%s/' % BOOTSTRAP_VERSION), local)
+
+jquery = lwrap(
+    WebCDN('//cdn.bootcss.com/jquery/%s/' % JQUERY_VERSION), local)
+
+html5shiv = lwrap(
+    WebCDN('//cdn.bootcss.com/html5shiv/%s/' % HTML5SHIV_VERSION))
+
+respondjs = lwrap(
+    WebCDN('//cdn.bootcss.com/respond.js/%s/' % RESPONDJS_VERSION))
+```
