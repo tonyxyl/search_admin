@@ -140,3 +140,5 @@ html5shiv = lwrap(
 respondjs = lwrap(
     WebCDN('//cdn.bootcss.com/respond.js/%s/' % RESPONDJS_VERSION))
 ```
+
+`flask_moment`使用其他cdn需要找到`~/venv/lib/site-packages/flask_moment.py`修改.
